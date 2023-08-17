@@ -10,5 +10,7 @@ public interface IEntityDtoMapper<TEntity, TDto>
 {
     TDto MapEntityToDto(TEntity entity);
     TEntity MapDtoToEntity(TDto dto);
+    List<TDto> MapEntityListToDtoList(IEnumerable<TEntity> entityList);
+    List<TEntity> MapDtoListToEntityList(IEnumerable<TDto> dtoList);
 }
 

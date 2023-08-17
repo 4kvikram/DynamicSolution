@@ -39,8 +39,8 @@ public class GenericController<TEntity, TDto> : ControllerBase
         if (entity == null)
             return NotFound();
 
-       // =var dto = _mapper.MapEntityToDto(entity);
-        return Ok(entity);
+        var dto = _mapper.MapEntityListToDtoList(entity);
+        return Ok(dto);
     }
 
     [HttpPost]
