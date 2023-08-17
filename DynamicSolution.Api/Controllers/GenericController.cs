@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DynamicSolution.Api.Controllers;
 
-//[Route("api/[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class GenericController<TEntity, TDto> : ControllerBase 
     where TEntity : class ,IEntityWithId
