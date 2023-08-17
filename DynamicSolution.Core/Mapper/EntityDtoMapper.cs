@@ -41,4 +41,14 @@ public class EntityDtoMapper<TEntity, TDto> : IEntityDtoMapper<TEntity, TDto>
         }
         return entity;
     }
+    public List<TDto> MapEntityListToDtoList(IEnumerable<TEntity> entityList)
+    {
+        var dtoList = new List<TDto>();
+        foreach (var entity in entityList)
+        {
+            var dto = MapEntityToDto(entity);
+            dtoList.Add(dto);
+        }
+        return dtoList;
+    }
 }

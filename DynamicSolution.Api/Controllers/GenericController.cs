@@ -8,8 +8,8 @@ namespace DynamicSolution.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class GenericController<TEntity, TDto> : ControllerBase 
-    where TEntity : class ,IEntityWithId
+public class GenericController<TEntity, TDto> : ControllerBase
+    where TEntity : class, IEntityWithId
     where TDto : class
 {
     private readonly IRepository<TEntity> _repository;
@@ -30,6 +30,17 @@ public class GenericController<TEntity, TDto> : ControllerBase
 
         var dto = _mapper.MapEntityToDto(entity);
         return Ok(dto);
+
+    }
+    [HttpGet]
+    public IActionResult Get()
+    {
+        var entity = _repository.GetAll();
+        if (entity == null)
+            return NotFound();
+
+       // =var dto = _mapper.MapEntityToDto(entity);
+        return Ok(entity);
     }
 
     [HttpPost]

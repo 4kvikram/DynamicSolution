@@ -7,6 +7,7 @@ public interface IRepository<TEntity>
     void Add(TEntity entity);
     void Update(TEntity entity);
     void Delete(TEntity entity);
+    List<TEntity> GetAll();
 }
 
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
@@ -18,9 +19,9 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         _dbContext = dbContext;
     }
 
-    public virtual IQueryable<TEntity> GetAll()
+    public virtual List<TEntity> GetAll()
     {
-        return _dbContext.Set<TEntity>();
+        return _dbContext.Set<TEntity>().ToList();
     }
 
     public virtual TEntity GetById(int id)
